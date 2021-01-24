@@ -1,12 +1,12 @@
 
 import Tweet from "./Tweet";
 
-const TweetList = ({name, message}) => {
+const TweetList = ({name, tweets, setTweets}) => {
     return(
         <div className="tweet-list">
-            <Tweet name={name} message={message}/>
-            <Tweet name={name} message={message}/>
-            <Tweet name={name} message={message}/>
+            {tweets.map((data) => (
+                <Tweet name={name} tweet={data} key={data.id} setTweets={setTweets} tweets={tweets}/>
+            ))}
         </div>
     );
 };

@@ -1,23 +1,22 @@
-import React from "react";
-import './App.css';
+import React, {useState, useEffect} from "react";
 import TweetList from "./components/TweetList";
 import CreateTweet from "./components/CreateTweet";
 
 function App() {
 
-  const name = "john"
-  const message ="Message Text";
+  const [name, setName] = useState("John");  
+  const [textInput, setTextInput] = useState("");
+  const [tweets, setTweets] = useState([]);
 
-  const sayHelloHandler = () => {
-    console.log(`Hello `);
-  };
+  useEffect(() => {
+    console.log("Effect run");
+  }, [tweets]);
 
   return (
     <div>
-      {/* <CreateTweet />
-      <TweetList name={name} message={message}/> */}
-      <h1>Hello {name}</h1>
-      <button onClick={sayHelloHandler}>Click</button>
+      <h1>Tweet</h1>
+      <CreateTweet textInput={textInput} setTextInput={setTextInput} setTweets={setTweets} tweets={tweets} />
+      <TweetList tweets={tweets} setTweets={setTweets} name={name}/>
     </div>
   );
 };
